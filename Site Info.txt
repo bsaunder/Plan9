@@ -1,0 +1,15 @@
+Programming LANguage 9
+PLAN9.info
+
+UFO, not a Robot
+
+Banner - UFO Left Hand
+Splash - People (PLAN9 Text, Top Right Corner)
+
+
+
+
+ftp://plan9info:belalugosi@64.106.206.170:21
+Files go in /httpdocs/
+
+Main page index.html

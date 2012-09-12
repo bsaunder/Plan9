@@ -1,0 +1,60 @@
+Convert Plan9Simulator.java into base class with two sub-classes:
+	
+Plan9CodeChecker.java - Perform all Error & Syntax Checking.
+	Allowed Directions (N,S,E,W)
+	Allowed Instructions (DIR,MOVE1,INIT,SET,CHANGE,HIDE,SHOW,LOOP,ENDLOOP)
+	Allowed Int Values (-127 to 128)
+	All Lines MUST end with a ;
+	
+	Private Data:
+		String source
+		boolean validcode_flag	
+	Constructor:
+		Plan9CodeChecker(String code)
+	Public Functions:
+		// Runs through code performing all private checks
+		void checkCode() throws Plan9Exception
+		boolean codeIsValid()		
+	Private Functions: (All Throw Plan9Exception)
+		checkDir(char dir) // Checks a Direction
+		checkInt(int x) // Checks an Integer
+		checkCmds() // Checks all Commands are Valid
+		checkSyntax() // Checks All Lines end with a ;
+	
+Plan9CodeExecuter.java - Executes PLAN9 Code & Prints Results
+	Private Data:
+		String source	
+	Constructor:
+		Plan9CodeExecuter(String code)
+	Public Functions:
+		void executeCode() throws Plan9Exception
+		void printEnd()
+	Private Functions: (All Throw Plan9Exception)
+		void dir(char dir)
+		void move(int x) // Moves x Spaces
+		void move() // Moves 1 Space
+		void init(int x)	
+		void set(int x)
+		void change(int x)
+		void hide()
+		void show()
+		void printCmd()
+		void runLoop(String loopCode)
+
+
+Basic Simulation Run:
+	Plan9CodeChecker check = new Plan9CodeChecker(code)
+	Plan9CodeExecuter exec = new Plan9CodeExecuter(code)
+	try{
+		check.checkCode()
+		if(check.codeIsValid()){
+			exec.executeCode()			
+			statusBox.setText("Code Run Complete")
+			exec.printEnd()
+			output.visible = true
+		}
+	}catch(Plan9Exception e){
+		statusBox.setText(e.getMessage())
+	}
+		
+		
